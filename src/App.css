@@ -1,42 +1,114 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  /* Color Hunt Palette */
+  --deep-olive: #41431B;
+  --sage-green: #AEB784;
+  --warm-sand: #E3DBBB;
+  --bone-white: #F8F3E1;
+  
+  --white: #ffffff;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow: 0 4px 20px rgba(65, 67, 27, 0.15);
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bone-white);
+  color: var(--deep-olive);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: block; /* Overriding Vite centering */
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 3rem;
+  background-color: var(--deep-olive);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo & Title Group */
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo img {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform 0.5s ease;
+}
+
+.logo:hover img {
+  transform: rotate(5deg) scale(1.05);
+}
+
+.nav-bar h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bone-white);
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif; /* A clean sans-serif looks best here */
+}
+
+/* Navigation Buttons Container */
+.tabs-btn {
+  display: flex;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.05); /* Very subtle glass effect */
+  padding: 6px;
+  border-radius: 50px;
+  border: 1px solid rgba(227, 219, 187, 0.1);
+}
+
+.tabs-btn button {
+  background: transparent;
+  border: none;
+  padding: 10px 24px;
+  color: var(--warm-sand);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: var(--transition);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Interactive Hover State */
+.tabs-btn button:hover {
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.tabs-btn button:active {
+  transform: scale(0.95); /* Tactile click feedback */
+}
+
+/* Active State - Using Sage Green */
+.tabs-btn button.active {
+  background-color: var(--sage-green);
+  color: var(--deep-olive);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  .nav-bar h1 {
+    font-size: 0.9rem;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
